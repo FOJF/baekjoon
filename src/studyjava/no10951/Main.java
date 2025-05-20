@@ -15,7 +15,6 @@ public class Main {
 
         while (true) {
             try {
-
                 strs = sc.nextLine().split(" ");
                 if (strs.length != 2) break;
                 System.out.println(Integer.parseInt(strs[0]) + Integer.parseInt(strs[1]));

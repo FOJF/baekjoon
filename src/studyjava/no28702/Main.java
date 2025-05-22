@@ -14,7 +14,7 @@ public class Main {
 
         for (; i < 3; i++) { // 진짜 숫자가 들어오면 break
             lastRealNumber = br.readLine();
-            if (!lastRealNumber.endsWith("z")) break;
+            if (!lastRealNumber.endsWith("z")) break; // z로 끝나면 Fizz, Buzz, FizzBuzz, 기다리는 진짜 숫자가 아님
         }
 
         br.close();
@@ -32,3 +32,22 @@ public class Main {
             System.out.println(n);
     }
 }
+
+// 3의 배수와 5의 배수는 세번 연속으로 나열되는 일이 없음, 문제에 오류가 없으려면 숫자만 먼저 발견해서 계산후 출력하면 끝
+// 3개의 연속된 숫자 중 3의 배수는 무조건 한 개가 있고, 5의 배수는 한 개나 없을 수 밖에 없으므로
+// 프로그램 돌려봤을때 162024764까지는 없었음.
+
+//        int j = 1;
+//        int count = 0;
+//        while(true) {
+//            if (j%3==0) count++;
+//            else if (j%5==0) count++;
+//            else count = 0;
+//
+//            if(count >= 3) {
+//                break;
+//            }
+//            System.out.println("count = " + count);
+//                System.out.println("j = " + j); //j = 162024764
+//            j++;
+//        }

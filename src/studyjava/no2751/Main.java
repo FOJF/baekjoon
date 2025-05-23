@@ -13,7 +13,6 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             intArray[i] = Integer.parseInt(br.readLine());
-            ;
         }
 
         br.close();

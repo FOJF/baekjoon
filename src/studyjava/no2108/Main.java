@@ -41,11 +41,15 @@ public class Main {
     }
 
     static int median(TreeMap<Integer, Integer> tm) {
-        int medIndex = tm.size() / 2 + 1;
-        for (Integer key : tm.keySet()) {
-            medIndex--;
-            if (medIndex == 0)
-                return key;
+        int count = 0;
+        int total = 0;
+        for (int freq : tm.values()) total += freq;
+
+        int mid = (total + 1) / 2;
+
+        for (Map.Entry<Integer, Integer> entry : tm.entrySet()) {
+            count += entry.getValue();
+            if (count >= mid) return entry.getKey();
         }
         return 0;
     }

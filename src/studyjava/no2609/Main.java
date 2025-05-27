@@ -15,10 +15,10 @@ public class Main {
         int x = sc.nextInt();
         int y = sc.nextInt();
 
-        int gcf = Euclidean(Math.max(x,y),Math.min(x,y));
+        int gcd = Euclidean(Math.max(x,y),Math.min(x,y));
 
-        System.out.println(gcf); // 최대 공약수 출력
-        System.out.println(x*y/gcf); // 최소 공배수 출력
+        System.out.println(gcd); // 최대 공약수 출력
+        System.out.println(x*y/gcd); // 최소 공배수 출력
 
         sc.close();
     }

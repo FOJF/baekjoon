@@ -41,6 +41,7 @@ public class Main {
         s[x - 1] = 0;
     }
 
+    // check x: S에 x가 있으면 1을, 없으면 0을 출력한다. (1 ≤ x ≤ 20)
     static int check(int x) {
         return s[x - 1] == x ? 1 : 0;
     }
@@ -57,6 +58,9 @@ public class Main {
 
     // empty: S를 공집합으로 바꾼다.
     static void empty() {
-        s = new int[20];
+        Arrays.fill(s, 0);
     }
 }
+
+// 향상된 switch문 사용법 배움
+// Arrays.setAll

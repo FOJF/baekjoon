@@ -18,6 +18,11 @@ public class Main {
         }
         br.close();
 
+        BufferedWriter bw = getBufferedWriter(strs);
+        bw.close();
+    }
+
+    private static BufferedWriter getBufferedWriter(String[] strs) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         for (int i = 0; i < strs.length; i++) {
@@ -25,21 +30,21 @@ public class Main {
 
             if (strs[i].isEmpty()) continue;
 
-            if(strs[i].length() == i + 1) {
-                bw.write(strs[i].trim()+"\n");
+            if (strs[i].length() == i + 1) {
+                bw.write(strs[i].trim() + "\n");
                 continue;
             }
 
             String[] sameLengthStrs = strs[i].trim().split(" ");
-            Stream<String> strStream= Arrays.stream(sameLengthStrs).distinct().sorted();
+            Stream<String> strStream = Arrays.stream(sameLengthStrs).distinct().sorted();
             Iterator<String> it = strStream.iterator();
             while (it.hasNext()) {
-                bw.write(it.next()+"\n");
+                bw.write(it.next() + "\n");
             }
         }
 
         bw.flush();
-        bw.close();
+        return bw;
     }
 }
 

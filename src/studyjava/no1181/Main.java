@@ -2,6 +2,7 @@ package studyjava.no1181;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -30,11 +31,10 @@ public class Main {
             }
 
             String[] sameLengthStrs = strs[i].trim().split(" ");
-            sameLengthStrs = Arrays.stream(sameLengthStrs).distinct().toArray(String[]::new);
-            Arrays.sort(sameLengthStrs);
-            for(String sameLengthStr : sameLengthStrs) {
-
-                bw.write(sameLengthStr + "\n");
+            Stream<String> strStream= Arrays.stream(sameLengthStrs).distinct().sorted();
+            Iterator<String> it = strStream.iterator();
+            while (it.hasNext()) {
+                bw.write(it.next()+"\n");
             }
         }
 

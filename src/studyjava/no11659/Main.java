@@ -1,7 +1,6 @@
 package studyjava.no11659;
 
 import java.io.*;
-import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
@@ -25,12 +24,10 @@ public class Main {
 			intJK[0] = Integer.parseInt(stringJK[0]);
 			intJK[1] = Integer.parseInt(stringJK[1]);
 
-			int sum = 0;
+			int sum = intPreSum[intJK[1]-1];
 
-			if(intJK[0]-2<=-1)
-				sum = intPreSum[intJK[1]-1];
-			else
-				sum = intPreSum[intJK[1]-1] - intPreSum[intJK[0]-2];
+			if(intJK[0]-2 > -1)
+				sum -= intPreSum[intJK[0]-2];
 
 			System.out.println(sum);
 		}

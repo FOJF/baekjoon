@@ -1,52 +1,31 @@
 package studyjava.no17626;
 
 import java.io.*;
-import java.util.*;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
-		br.close();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int target = Integer.parseInt(br.readLine());
+        br.close();
 
+        System.out.println(findMinSquares(target, 4));
+    }
 
+    // n: 목표 숫자, remainingCount: 남은 제곱수 개수
+    public static int findMinSquares(int n, int remainingCount) {
+        if (n <= 1) return n;
 
+        int sqrt = (int) Math.sqrt(n);
+        int minCount = remainingCount;
 
-		// int min = 4;
-		// int testSQRT = (int)Math.sqrt(n);
+        while (n / (sqrt * sqrt) < remainingCount) {
+            int next = findMinSquares(n - (sqrt * sqrt), remainingCount - 1) + 1;
+            minCount = Math.min(minCount, next);
+            sqrt--;
 
-		// while(n/(testSQRT*testSQRT) < 4) {
-		// 	int testNumber = n - testSQRT*testSQRT;
-		// 	int count = 1;
+            if (sqrt == 0) break;
+        }
 
-		// 	while(testNumber != 0) {
-		// 		int sqrt = (int)Math.sqrt(testNumber);
-		// 		testNumber -= sqrt*sqrt;
-		// 		count++;
-		// 	}
-		// 	testSQRT--;
-		// 	min = Math.min(min, count);
-		// }
-	
-
-		// System.out.println(min);
-
-
-
-
-
-
-		// int testSQRT = (int)Math.sqrt(n);
-
-		System.out.println(getd(n));
-	}
-
-	public static int getd(int n) {
-		if (n <= 1) return n;
-		int testSQRT = (int)Math.sqrt(n);
-
-		n -= testSQRT*testSQRT;
-		
-		return 1 + getd(n);	
-	}
+        return minCount;
+    }
 }

@@ -1,6 +1,6 @@
 package studyjava.no1012;
 
-public class Coord {
+class Coord {
 	int x;
 	int y;
 

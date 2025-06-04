@@ -12,6 +12,7 @@ public class Main {
 		String[] treeHeightStrs = br.readLine().split(" ");
 		br.close();
 
+
 		int[] trees = new int[n];
 
 		for(int i = 0; i < n; i++) {

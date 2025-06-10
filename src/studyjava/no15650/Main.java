@@ -1,7 +1,6 @@
 package studyjava.no15650;
 
 import java.io.*;
-import java.util.*;
 
 public class Main {
     static int n;

@@ -43,7 +43,10 @@ public class Main {
 			}
 		}
 
-		System.out.println(answerTime + " " + answerLevel);
+		// System.out.println(answerTime + " " + answerLevel);
+		
+    	 StringBuilder sb = new StringBuilder();
+    	 System.out.println(sb.append(answerTime).append(" ").append(answerLevel));
 	}
 
 	public static long getTimeToFlat (int[][] ground, int targetLevel, long blockCnt) {

@@ -12,7 +12,7 @@ public class Main {
 
 		int n = Integer.parseInt(input[0]);
 		int m = Integer.parseInt(input[1]);
-		long blockCnt = Integer.parseInt(input[2]);
+		int blockCnt = Integer.parseInt(input[2]);
 
 		int[][] ground = new int[n][m];
 
@@ -29,11 +29,11 @@ public class Main {
 
 		br.close();
 		
-		long answerTime = Integer.MAX_VALUE;
+		int answerTime = Integer.MAX_VALUE;
 		int answerLevel = highest;
 
 		for (int i = highest; i >= 0; i--) {
-			long timeToFlat = getTimeToFlat(ground, i, blockCnt);
+			int timeToFlat = getTimeToFlat(ground, i, blockCnt);
 
 			if (timeToFlat == -1) continue;
 
@@ -49,8 +49,8 @@ public class Main {
     	 System.out.println(sb.append(answerTime).append(" ").append(answerLevel));
 	}
 
-	public static long getTimeToFlat (int[][] ground, int targetLevel, long blockCnt) {
-		long time = 0;
+	public static int getTimeToFlat (int[][] ground, int targetLevel, int blockCnt) {
+		int time = 0;
 		for (int[] arr : ground) {
 			for (int i : arr) {
 				if(i <= targetLevel) continue;

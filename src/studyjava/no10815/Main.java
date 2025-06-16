@@ -11,9 +11,9 @@ public class Main {
 
 		input = br.readLine().split(" ");
 
-		Set<Integer> hashSet = new HashSet<>();
+		Set<String> hashSet = new HashSet<>();
 		for(String s : input) {
-			hashSet.add(Integer.parseInt(s));
+			hashSet.add(s);
 		}
 
 		br.readLine();
@@ -23,9 +23,8 @@ public class Main {
 
 		StringBuilder sb = new StringBuilder();
 		for(String s : input) {
-			sb.append(hashSet.contains(Integer.parseInt(s)) ? "1" : "0").append(" ");
+			sb.append(hashSet.contains(s) ? "1" : "0").append(" ");
 		}
-
 
 		System.out.println(sb);
 	}

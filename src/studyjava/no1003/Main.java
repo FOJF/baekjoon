@@ -1,5 +1,3 @@
-package studyjava.no1003;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,39 +8,30 @@ public class Main {
 
         int t = Integer.parseInt(br.readLine());
 
+        int[] answer = new int[41];
+        answer[0] = 0;
+        answer[1] = 1;
+
+        int calculatedIdx = 1;
+
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < t; i++) {
             int n = Integer.parseInt(br.readLine());
-            System.out.println(getZeroTimes(n) + " " + getOneTimes(n));
+
+            if (n == 0) {
+                sb.append("1 0\n");
+                continue;
+            }
+
+            while(calculatedIdx < n) {
+                calculatedIdx++;
+                answer[calculatedIdx] = answer[calculatedIdx-1] + answer[calculatedIdx-2];
+            }
+
+            sb.append(answer[n-1]).append(" ").append(answer[n]).append("\n");
         }
 
         br.close();
-    }
-
-    static int getZeroTimes(int n) {
-        int[] beforeNumbers = {1, 0};
-        int newNumber = 0;
-        for (int i = 0; i <= n; i++) {
-            if (i == 0) continue;
-            else if (i == 1) continue;
-
-            newNumber = beforeNumbers[0] + beforeNumbers[1];
-            beforeNumbers[0] = beforeNumbers[1];
-            beforeNumbers[1] = newNumber;
-        }
-        return n < 2 ? beforeNumbers[n] : newNumber;
-    }
-
-    static int getOneTimes(int n) {
-        int[] beforeNumbers = {0, 1};
-        int newNumber = 0;
-        for (int i = 0; i <= n; i++) {
-            if (i == 0) continue;
-            else if (i == 1) continue;
-
-            newNumber = beforeNumbers[0] + beforeNumbers[1];
-            beforeNumbers[0] = beforeNumbers[1];
-            beforeNumbers[1] = newNumber;
-        }
-        return n < 2 ? beforeNumbers[n] : newNumber;
+        System.out.println(sb);
     }
 }

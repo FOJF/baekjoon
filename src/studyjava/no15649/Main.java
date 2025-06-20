@@ -36,7 +36,6 @@ public class Main {
 	public static void getAnswers(int target, int[] nums, int[] temp, int[][] answers, boolean[] visited) {
 		if (target == tempIdx) {
 			answers[lastIdx++] = Arrays.copyOf(temp, temp.length);
-			System.out.println(Arrays.toString(temp));
 			return;
 		}
 

@@ -74,8 +74,4 @@ public class Main {
             }
         }
     }
-
-    public static boolean isValidIdx(int x, int y) {
-        return ;
-    }
 }

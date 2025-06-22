@@ -5,7 +5,6 @@ public class Main {
 
 	static int[] numbers;
 	static boolean[] isPicked;
-	// static Set<String> answer = new LinkedHashSet<>();
 	static List<Integer> temp = new ArrayList<>();
 	static StringBuilder answer = new StringBuilder();
 
@@ -20,18 +19,18 @@ public class Main {
 		Arrays.sort(numbers);
 		isPicked = new boolean[numbers.length];
 
-		getAnswer(0,nm[1]);
+		getAnswer(nm[1]);
 			
 		System.out.println(answer);
 	}
 
-	public static void getAnswer(int start, int length) {
+	public static void getAnswer(int length) {
 		if (temp.size() == length) {
 
 			for (int num : temp) {
 				answer.append(num).append(" ");
 			}
-			answer.append("\n");
+            answer.append("\n");
 			return;
 		}
 
@@ -42,7 +41,7 @@ public class Main {
 			lastPick = numbers[i];
 			temp.add(numbers[i]);
 			isPicked[i] = true;
-			getAnswer(i+1, length);
+			getAnswer(length);
 			isPicked[i] = false;
 			temp.remove(temp.size()-1);
 		}

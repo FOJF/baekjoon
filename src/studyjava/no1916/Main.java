@@ -5,12 +5,12 @@ public class Main {
 	
 	static int[] min;
 	// k = 출발지, v = 출발지에서 가능한 도착지, 비용을 저장, v_k = 도착지, v_v = 출발지에서 도착지까지 가는 비용
-	static Map<Integer, Map<Integer, Integer>> 버스경로랑비용들;
+	static Map<Integer, Map<Integer, Integer>> busInfos;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		busTable = new HashMap<>();
+		busInfos = new HashMap<>();
 
 		int cityCnt = Integer.parseInt(br.readLine());
 
@@ -33,16 +33,18 @@ public class Main {
 		findMinFee(from, to);
 
 		System.out.println(min[to-1]);
-		System.out.println(Arrays.toString(min));
+		// System.out.println(Arrays.toString(min));
 	}
 
-	public static void addEdge(int 출발지, int 도착지, int 비용) {
+	public static void addEdge(int from, int to, int fee) {
 		// k = 도착지, v = 비용
-		Map<Integer, Integer> 갈수있는도시와비용들 = 버스경로랑비용들.getOrDefault(출발지, new HashMap<>());
+		Map<Integer, Integer> toFeeMap = busInfos.getOrDefault(from, new HashMap<>());
 
-		도착지까지의비용모음.put(도착지, 비용);
+		int originFee = toFeeMap.getOrDefault(to, Integer.MAX_VALUE);
+		if (originFee > fee)
+			toFeeMap.put(to, fee);
 
-		버스경로랑비용들.put(출발지, 도착지까지의비용모음);
+		busInfos.put(from, toFeeMap);
 	}
 
 	public static void findMinFee(int from, int to) {
@@ -53,7 +55,7 @@ public class Main {
 
 		while(!bfsQ.isEmpty()) {
 			int now = bfsQ.poll();
-			Map<Integer, Integer> nowMap = busTable.get(now);
+			Map<Integer, Integer> nowMap = busInfos.get(now);
 			if (nowMap == null) continue;
 			for (int next : nowMap.keySet()) {
 				if (min[next-1] > min[now-1] + nowMap.get(next)) {

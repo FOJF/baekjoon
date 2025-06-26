@@ -2,38 +2,30 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	static int[] numbers;
-	static boolean[] visited;
+        br.readLine();
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		br.readLine();
-		numbers = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		br.close();
+        int[] numbers = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-		visited = new boolean[numbers.length];
+        br.close();
 
-		getLength(0);
+        int[] length = new int[numbers.length];
 
-		System.out.println(max);
-	}
+        int max = 1;
 
-	static int length = 0;
-	static int max = 0;
-	static int lastNum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            int maxLength = 1;
+            for (int j = 0; j < i; j++) {
+                if (numbers[j] < numbers[i]) {
+                    maxLength = Math.max(maxLength, length[j] + 1);
+                }
+            }
+            length[i] = maxLength;
+            max = Math.max(max, maxLength);
+        }
 
-	public static void getLength(int start) {
-		for (int i = start; i < numbers.length; i++) {
-			if (numbers[i] > lastNum && (length + numbers.length-i) > max) {
-				length++;
-				int tmp = lastNum;
-				lastNum = numbers[i];
-				max = Math.max(length, max);
-				getLength(i+1);
-				length--;
-				lastNum = tmp;
-			}
-		}
-	}
+        System.out.println(max);
+    }
 }

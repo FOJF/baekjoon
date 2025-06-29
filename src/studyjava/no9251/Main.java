@@ -19,12 +19,22 @@ public class Main{
 				
 				lcs[i][j] = Math.max(lcs[i-1][j], lcs[i][j-1]);
 				
-				if (nowB == nowA) lcs[i][j]++;
+				if (nowB == nowA) lcs[i][j] = lcs[i-1][j-1]+1;
+				else lcs[i][j] = Math.max(lcs[i-1][j], lcs[i][j-1]);
 			}
 		}
 
 		System.out.println(lcs[b.length()][a.length()]);
-		System.out.println(Arrays.deepToString(lcs));
-
+		// System.out.println(Arrays.deepToString(lcs));
 	}
 }
+
+/*
+[[0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 1, 1, 1, 1, 1],
+ [0, 1, 1, 2, 2, 2, 2],
+ [0, 1, 1, 2, 2, 2, 3],
+ [0, 1, 2, 2, 2, 2, 3],
+ [0, 2, 2, 3, 3, 3, 3],
+ [0, 2, 2, 3, 3, 4, 4]]
+*/

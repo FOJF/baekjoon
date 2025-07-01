@@ -1,8 +1,18 @@
 import java.io.*;
 import java.util.*;
 
+class Edge {
+    int to;
+    int weight;
+
+    public Edge(int to, int weight) {
+        this.to = to;
+        this.weight = weight;
+    }
+}
+
 public class Main {
-    static List<Map<Integer, Integer>> adjList;
+    static List<List<Edge>> adjList;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -14,7 +24,7 @@ public class Main {
         adjList = new ArrayList<>();
 
         for (int i = 0; i < n+1; i++) {
-            adjList.add(new HashMap<>());
+            adjList.add(new ArrayList<>());
         }
 
         for (int i = 0; i < e; i++) {
@@ -23,8 +33,8 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
             int dist = Integer.parseInt(st.nextToken());
 
-            adjList.get(a).put(b, dist);
-            adjList.get(b).put(a, dist);
+            adjList.get(a).add(new Edge(b, dist));
+            adjList.get(b).add(new Edge(a, dist));
         }
 
         st = new StringTokenizer(br.readLine());
@@ -71,12 +81,8 @@ public class Main {
             if (visited[now[0]]) continue;
             visited[now[0]] = true;
 
-            Map<Integer, Integer> nexts = adjList.get(now[0]);
-
-            for (int next : nexts.keySet()) {
-                int dist = nexts.get(next);
-
-                q.add(new int[]{next, dist + now[1]});
+            for (Edge next : adjList.get(now[0])) {
+                q.add(new int[]{next.to, next.weight + now[1]});
             }
         }
 

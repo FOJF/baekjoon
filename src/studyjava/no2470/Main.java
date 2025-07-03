@@ -23,7 +23,6 @@ public class Main {
                 answer[0] = liquids[start];
                 answer[1] = liquids[end];
                 abs = Math.abs(sum);
-
             }
 
             if (sum < 0) {

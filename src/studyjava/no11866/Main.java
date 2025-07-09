@@ -1,4 +1,4 @@
-// package studyjava.no11866;
+package studyjava.no11866;// package studyjava.no11866;
 
 // import java.io.*;
 

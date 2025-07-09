@@ -1,3 +1,5 @@
+package studyjava.no5525;
+
 import java.io.*;
 
 public class Main {

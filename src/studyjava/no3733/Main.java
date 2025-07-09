@@ -1,3 +1,5 @@
+package studyjava.no3733;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -12,7 +14,7 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
             sb.append(b/(a+1)).append("\n");
             st = new StringTokenizer(br.readLine());
-        } while(st.hasNext());
+        } while(st.hasMoreTokens());
 
         System.out.println(sb);
         br.close();

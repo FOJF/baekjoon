@@ -1,3 +1,5 @@
+package studyjava.no2294;
+
 import java.io.*;
 import java.util.*;
 

@@ -1,4 +1,4 @@
-// import java.io.*;
+package studyjava.no7662;// import java.io.*;
 // import java.util.*;
 
 // public class Main {

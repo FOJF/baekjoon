@@ -21,26 +21,24 @@ public class Main {
                 Deque<Integer> dq = new ArrayDeque<>();
 
                 for (int num : arr) {
-                	dq.addLast(num);
+                    dq.addLast(num);
                 }
 
-	            boolean isFirst = true;
-	            StringBuilder sbSub = new StringBuilder();
-	            sbSub.append("[");
-	            for (char c : cmd.toCharArray()) {
-	            	if (c == 'R') isFirst = !isFirst;
-	            	else {
-	            		if (dq.size() == 0) {
-	            			sb.append("error\n");
-	            			continue loop;
-	            		}
-	            		else {
-	            			if(isFirst) dq.pollFirst();
-	            			else dq.pollLast();
-	            		}
-	            	}
-	            }
-	            sb.append(dequeToString(dq, isFirst));
+                boolean isFirst = true;
+
+                for (char c : cmd.toCharArray()) {
+                    if (c == 'R') isFirst = !isFirst;
+                    else {
+                        if (dq.isEmpty()) {
+                            sb.append("error\n");
+                            continue loop;
+                        } else {
+                            if (isFirst) dq.pollFirst();
+                            else dq.pollLast();
+                        }
+                    }
+                }
+                sb.append(dequeToString(dq, isFirst));
             } else {
                 if (cmd.indexOf('D') < 0) sb.append("[]\n");
                 else sb.append("error\n");
@@ -52,19 +50,19 @@ public class Main {
     }
 
     public static String dequeToString(Deque<Integer> dq, boolean isFirst) {
-    	// if (dq.isEmpty()) return "error\n";
-    	if (dq.isEmpty()) return "[]\n";
+        // if (dq.isEmpty()) return "error\n";
+        if (dq.isEmpty()) return "[]\n";
 
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("[");
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
 
-    	while(!dq.isEmpty()) {
-    		sb.append(isFirst?dq.pollFirst():dq.pollLast()).append(",");
-    	}
+        while (!dq.isEmpty()) {
+            sb.append(isFirst ? dq.pollFirst() : dq.pollLast()).append(",");
+        }
 
-    	sb.setLength(sb.length()-1);
-    	sb.append("]\n");
+        sb.setLength(sb.length() - 1);
+        sb.append("]\n");
 
-    	return sb.toString();
+        return sb.toString();
     }
 }

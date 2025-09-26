@@ -33,14 +33,13 @@ public class Main {
 		if (isSameColors(x, y, area)) {
 			sb.append(grid[x][y]);
 		} else {
-		sb.append("(");
+			sb.append("(");
 			comp(x, y, area/2);
 			comp(x, y + area/2, area/2);
 			comp(x + area/2, y, area/2);
 			comp(x + area/2, y + area/2, area/2);
-		sb.append(")");
+			sb.append(")");
 		}
-
 	}
 
 	public static boolean isSameColors(int x, int y, int area) {
